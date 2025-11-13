@@ -1,0 +1,40 @@
+"use client";
+
+import Loading from "@/loading";
+import LoadingStore from "@/loadingStore";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+export default function Home() {
+  const router = useRouter();
+  const setLoading = LoadingStore((state) => state.setLoading);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  return (
+    <div className="w-full h-[100dvh] flex justify-center items-center bg-black">
+      <div className="flex flex-col justify-center gap-8 items-center">
+        <div className="text-4xl lg:text-6xl text-white font-light">{`Who's Watching?`}</div>
+        <div
+          className="flex flex-col gap-4 items-center text-gray-400 hover:text-white cursor-pointer group"
+          onClick={() => {
+            setLoading(true);
+            router.push("/summary");
+          }}
+        >
+          <Image
+            src={"/dummy.png"}
+            alt="profile"
+            width={96}
+            height={96}
+            className="rounded-lg max-h-[200px] max-w-[200px] min-h-[96px] min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white"
+          />
+          <div className="text-lg lg:text-xl">Guest</div>
+        </div>
+      </div>
+    </div>
+  );
+}

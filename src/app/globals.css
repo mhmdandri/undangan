@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+@import "react-multi-carousel/lib/styles.css";
+@import "react-toastify/dist/ReactToastify.css";
+
+@theme {
+  --color-red-netflix: #e50914;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: white;
+}
+
+.font-tegas {
+  font-family: "Georgia, serif";
+}
+
+.react-multiple-carousel__arrow {
+  @apply !w-10 !h-10 !rounded-full !bg-white/10 hover:!bg-white/20 !flex !items-center !justify-center !transition-colors top-0 !hidden md:!flex !min-h-0 !min-w-0;
+}
+
+.react-multiple-carousel__arrow--right {
+  @apply right-0;
+}
+
+.react-multiple-carousel__arrow--left {
+  @apply left-[calc(100%-88px)];
+}
+
+.input-custom {
+  @apply flex h-9 w-full rounded-md border px-3 py-1 text-base outline-none md:text-sm bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-500;
+}
+
+.input-custom:focus {
+  @apply border border-white;
+}
+
+.react-responsive-modal-modal {
+  @apply !bg-[#1b1718] rounded-2xl w-[500px] max-w-[90vw]!;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hilangkan spinner di Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
