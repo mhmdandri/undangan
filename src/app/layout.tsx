@@ -20,8 +20,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      {loading && <Loading />}
-      <body>{children}</body>
+      <body>
+        {loading && <Loading />}
+        {children}
+      </body>
     </html>
   );
 }
