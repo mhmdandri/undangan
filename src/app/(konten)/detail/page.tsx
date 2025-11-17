@@ -2,11 +2,7 @@
 
 import { SpeakerXMarkIcon } from "@heroicons/react/20/solid";
 import { formatDate } from "@/utils/format";
-import {
-  PaperAirplaneIcon,
-  PencilSquareIcon,
-  SpeakerWaveIcon,
-} from "@heroicons/react/24/outline";
+import { PaperAirplaneIcon, PencilSquareIcon, SpeakerWaveIcon } from "@heroicons/react/24/outline";
 import { CalendarIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import dayjs from "dayjs";
 import Image from "next/image";
@@ -28,18 +24,7 @@ export default function Detail() {
 
   const tab = ["Episodes", "Collection", "Pemeran"];
 
-  const color = [
-    "#FF4B4B",
-    "#FF9F1C",
-    "#3A86FF",
-    "#FFD60A",
-    "#2ECC71",
-    "#FF66B3",
-    "#00FFFF",
-    "#A259FF",
-    "#FF6B6B",
-    "#C0FF33",
-  ];
+  const color = ["#FF4B4B", "#FF9F1C", "#3A86FF", "#FFD60A", "#2ECC71", "#FF66B3", "#00FFFF", "#A259FF", "#FF6B6B", "#C0FF33"];
   const defaultUcapan = [
     { nama: "Nama A", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
     { nama: "A", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
@@ -102,9 +87,7 @@ export default function Detail() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(
-          data?.error ?? "Terjadi kesalahan saat mengirim ucapan"
-        );
+        throw new Error(data?.error ?? "Terjadi kesalahan saat mengirim ucapan");
       }
       const newUcapan = {
         nama: payload.name,
@@ -130,24 +113,14 @@ export default function Detail() {
     <div className="flex flex-col">
       <div className="relative w-full aspect-video mx-auto bg-linear-to-b from-neutral-900 to-black">
         <div className="absolute inset-0 flex items-center justify-center">
-          <video
-            src={"/video.mp4"}
-            autoPlay
-            loop
-            muted={isMuted}
-            className="w-full h-full object-cover"
-          />
+          <video src={"/video.mp4"} autoPlay loop muted={isMuted} className="w-full h-full object-cover" />
           {/* <Image src={"/dummy.png"} alt="dummy" height={100} width={100} className="w-full h-full object-cover" /> */}
           <div className="absolute top-4 right-4 z-10">
             <button
               className="bg-black bg-opacity-60 hover:bg-opacity-80 border border-white border-opacity-30 rounded-full p-2 transition-all flex justify-center items-center cursor-pointer"
               onClick={() => setIsMuted(!isMuted)}
             >
-              {isMuted ? (
-                <SpeakerWaveIcon className="w-5 h-5 text-white" />
-              ) : (
-                <SpeakerXMarkIcon className="w-5 h-5 text-white" />
-              )}
+              {isMuted ? <SpeakerWaveIcon className="w-5 h-5 text-white" /> : <SpeakerXMarkIcon className="w-5 h-5 text-white" />}
             </button>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-black to-transparent" />
@@ -166,12 +139,7 @@ export default function Detail() {
               </button>
               <button
                 className="flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-9 bg-neutral-700 hover:bg-neutral-600 text-white px-6 md:px-8 py-5 md:py-6 rounded gap-2 cursor-pointer"
-                onClick={() =>
-                  window.open(
-                    "https://maps.app.goo.gl/u3v4wtvmJ2i3pWn66",
-                    "_blank"
-                  )
-                }
+                onClick={() => window.open("https://maps.app.goo.gl/u3v4wtvmJ2i3pWn66", "_blank")}
               >
                 <MapPinIcon className="w-6 h-6" /> Gedung A
               </button>
@@ -182,14 +150,10 @@ export default function Detail() {
 
       <div className="px-4 pb-8">
         <div className="mt-4 mb-6 flex flex-col gap-2">
-          <div className="text-2xl md:text-4xl font-bold md:hidden flex">
-            Andri & Cica
-          </div>
+          <div className="text-2xl md:text-4xl font-bold md:hidden flex">Andri & Cica</div>
           <div className="flex gap-3 text-sm md:text-lg font-medium text-gray-300 items-center ">
             <div>2025</div>
-            <div className="flex items-center justify-center rounded-md px-2 py-0.5 bg-neutral-800">
-              SU
-            </div>
+            <div className="flex items-center justify-center rounded-md px-2 py-0.5 bg-neutral-800">SU</div>
           </div>
         </div>
 
@@ -206,9 +170,7 @@ export default function Detail() {
           </button>
           <button
             className="flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-9 bg-neutral-700 hover:bg-neutral-600 text-white px-6 md:px-8 py-5 md:py-6 rounded gap-2 cursor-pointer"
-            onClick={() =>
-              window.open("https://maps.app.goo.gl/u3v4wtvmJ2i3pWn66", "_blank")
-            }
+            onClick={() => window.open("https://maps.app.goo.gl/u3v4wtvmJ2i3pWn66", "_blank")}
           >
             <MapPinIcon className="w-6 h-6" /> Gedung A
           </button>
@@ -216,14 +178,12 @@ export default function Detail() {
 
         <div className="flex flex-col md:gap-2 gap-1 mb-8">
           <div className="text-neutral-300 md:text-lg text-[16px]">
-            Setelah 5 tahun perjalanan penuh cinta, tawa, dan pertumbuhan
-            bersama, kami dengan senang hati mengundang Anda untuk menyaksikan
-            kami mengucapkan janji suci pernikahan.
+            Setelah 5 tahun perjalanan penuh cinta, tawa, dan pertumbuhan bersama, kami dengan senang hati mengundang Anda untuk menyaksikan kami mengucapkan
+            janji suci pernikahan.
           </div>
           <div className="text-neutral-400 md:text-[16px]">
-            "Cinta sejati tidak ditemukan, tetapi dibangun. Kami membangun cinta
-            kami satu hari pada satu waktu, satu kenangan pada satu waktu, satu
-            janji pada satu waktu."
+            "Cinta sejati tidak ditemukan, tetapi dibangun. Kami membangun cinta kami satu hari pada satu waktu, satu kenangan pada satu waktu, satu janji pada
+            satu waktu."
           </div>
         </div>
 
@@ -233,30 +193,19 @@ export default function Detail() {
             {tab?.map((item: string, index: number) => (
               <div
                 key={item}
-                className={`text-base md:text-lg font-bold px-2 pb-2 cursor-pointer ${
-                  index === selectedTab
-                    ? "border-t-6 pt-2 border-red-netflix"
-                    : "pt-3.5"
-                }`}
+                className={`text-base md:text-lg font-bold px-2 pb-2 cursor-pointer ${index === selectedTab ? "border-t-6 pt-2 border-red-netflix" : "pt-3.5"}`}
                 onClick={() => setSelectedTab(index)}
               >
                 {item}
               </div>
             ))}
           </div>
-          {selectedTab === 0 ? (
-            <Episode />
-          ) : selectedTab === 1 ? (
-            <Collection />
-          ) : (
-            <Pemeran />
-          )}
+          {selectedTab === 0 ? <Episode /> : selectedTab === 1 ? <Collection /> : <Pemeran />}
         </div>
 
         <div className="flex flex-col mb-8">
           <div className="text-base md:text-lg font-semibold flex gap-1 items-center mb-2 md:mb-4">
-            Tulis Ucapan Anda{" "}
-            <PencilSquareIcon className="w-5 h-5 text-white" />
+            Tulis Ucapan Anda <PencilSquareIcon className="w-5 h-5 text-white" />
           </div>
           <div className="flex flex-col gap-2">
             <input
@@ -282,24 +231,16 @@ export default function Detail() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 md:gap-4">
+        <div className="flex flex-col gap-2 md:gap-4 max-h-[400px] overflow-auto ">
           {ucapan?.map((item: any, index: number) => (
-            <div
-              className="bg-neutral-900 rounded-lg p-4 border border-neutral-800 gap-2 flex"
-              key={index}
-            >
-              <div
-                className="w-10 h-10 rounded-full md:flex hidden justify-center items-center shadow-2xl"
-                style={{ backgroundColor: item?.warna }}
-              >
+            <div className="bg-neutral-900 rounded-lg p-4 border border-neutral-800 gap-2 flex" key={index}>
+              <div className="w-10 h-10 rounded-full md:flex hidden justify-center items-center shadow-2xl" style={{ backgroundColor: item?.warna }}>
                 {singkatNama(item?.nama)}
               </div>
               <div className="flex-col gap-2 w-full">
                 <div className="flex justify-between items-center">
                   <div>{item?.nama}</div>
-                  <div className="text-neutral-500 text-sm">
-                    {formatDate(item.tanggal)}
-                  </div>
+                  <div className="text-neutral-500 text-sm">{formatDate(item.tanggal)}</div>
                 </div>
                 <div className="text-neutral-300">{item?.ucapan}</div>
               </div>
@@ -309,9 +250,7 @@ export default function Detail() {
       </div>
 
       <div className="text-center py-8 border-t border-neutral-800">
-        <div className="text-neutral-400 md:text-lg">
-          Sampai bertemu ya... 😁
-        </div>
+        <div className="text-neutral-400 md:text-lg">Sampai bertemu ya... 😁</div>
       </div>
     </div>
   );
