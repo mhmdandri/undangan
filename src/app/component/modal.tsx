@@ -5,12 +5,20 @@ import { Modal } from "react-responsive-modal";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
-export default function ModalCustom({ isOpen, onClose, onSubmit }: { isOpen: boolean; onClose: () => void; onSubmit: (data: any) => void }) {
+export default function ModalCustom({
+  isOpen,
+  onClose,
+  onSubmit,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (data: any) => void;
+}) {
   const [form, setForm] = useState({
-    nama: "",
-    kehadiran: "",
-    jumlah: "",
-    no: "",
+    name: "",
+    is_present: "",
+    total_guests: "",
+    email: "",
   });
 
   const option = [
@@ -19,24 +27,50 @@ export default function ModalCustom({ isOpen, onClose, onSubmit }: { isOpen: boo
   ];
 
   const formField = [
-    { label: "Nama", type: "text", placeholder: "Masukkan nama anda", name: "nama" },
-    { label: "Kehadiran", type: "radio", name: "kehadiran" },
-    { label: "Jika ya, berapa orang yang akan hadir?", type: "number", placeholder: "Contoh: 2", name: "jumlah" },
-    { label: "No. WA", type: "number", placeholder: "Contoh: 081234567890", name: "no" },
+    {
+      label: "Nama",
+      type: "text",
+      placeholder: "Masukkan nama anda",
+      name: "name",
+    },
+    { label: "Kehadiran", type: "radio", name: "is_present" },
+    {
+      label: "Jika ya, berapa orang yang akan hadir?",
+      type: "number",
+      placeholder: "Contoh: 2",
+      name: "total_guests",
+    },
+    {
+      label: "Email",
+      type: "email",
+      placeholder: "exmaple@email.com",
+      name: "email",
+    },
   ];
 
   useEffect(() => {
     if (isOpen) {
-      setForm({ nama: "", kehadiran: "", jumlah: "", no: "" });
+      setForm({ name: "", is_present: "", total_guests: "", email: "" });
     }
   }, [isOpen]);
 
   return (
-    <Modal open={isOpen} onClose={onClose} center focusTrapped={false} showCloseIcon={false}>
+    <Modal
+      open={isOpen}
+      onClose={onClose}
+      center
+      focusTrapped={false}
+      showCloseIcon={false}
+    >
       <div className="flex flex-col">
         <div className="flex justify-between items-start pb-4">
-          <div className="font-bold text-lg md:text-xl">Konfirmasi Kehadiran</div>
-          <XMarkIcon className="w-5 h-5 text-white cursor-pointer" onClick={onClose} />
+          <div className="font-bold text-lg md:text-xl">
+            Konfirmasi Kehadiran
+          </div>
+          <XMarkIcon
+            className="w-5 h-5 text-white cursor-pointer"
+            onClick={onClose}
+          />
         </div>
         <div className="flex flex-col gap-3">
           {formField?.map((item: any, index: number) => (
@@ -45,10 +79,16 @@ export default function ModalCustom({ isOpen, onClose, onSubmit }: { isOpen: boo
               {item?.type === "radio" ? (
                 <div className="flex gap-3">
                   {option?.map((item: any, index: number) => (
-                    <div key={index} className="flex gap-1 items-center cursor-pointer" onClick={() => setForm({ ...form, kehadiran: item?.value })}>
+                    <div
+                      key={index}
+                      className="flex gap-1 items-center cursor-pointer"
+                      onClick={() =>
+                        setForm({ ...form, is_present: item?.value })
+                      }
+                    >
                       <div
                         className={`w-4 h-4 rounded-full ${
-                          item?.value === form?.kehadiran
+                          item?.value === form?.is_present
                             ? "outline outline-red-netflix bg-red-netflix border-2 border-white"
                             : "outline-neutral-700 bg-zinc-800"
                         }`}
@@ -63,7 +103,9 @@ export default function ModalCustom({ isOpen, onClose, onSubmit }: { isOpen: boo
                     className="input-custom bg-zinc-800!"
                     placeholder={item?.placeholder}
                     value={(form as any)[item?.name]}
-                    onChange={(e) => setForm({ ...form, [item?.name]: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, [item?.name]: e.target.value })
+                    }
                     type={item?.type}
                   />
                 </div>
@@ -72,7 +114,12 @@ export default function ModalCustom({ isOpen, onClose, onSubmit }: { isOpen: boo
           ))}
           <button
             className="p-3 mt-2 cursor-pointer rounded-lg bg-red-netflix text-white font-semibold flex items-center justify-center hover:bg-[#c5000a] disabled:bg-gray-400 disabled:cursor-no-drop"
-            disabled={!form?.jumlah || !form?.nama || !form?.no || form?.kehadiran === ""}
+            disabled={
+              !form.email ||
+              !form.name ||
+              !form.total_guests ||
+              form.is_present === ""
+            }
             onClick={() => onSubmit(form)}
           >
             Submit
