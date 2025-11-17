@@ -19,7 +19,11 @@ dayjs.extend(localizedFormat);
 dayjs.extend(localeData);
 dayjs.locale(id);
 
-export default function LayoutKonten({ children }: { children: React.ReactNode }) {
+export default function LayoutKonten({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const setLoading = LoadingStore((state) => state.setLoading);
@@ -39,19 +43,21 @@ export default function LayoutKonten({ children }: { children: React.ReactNode }
         pauseOnHover
       />
       <div className="sticky top-0 bg-black w-full px-4 py-3 md:px-6 md:py-4">
-        <Image
-          src={"/logo.png"}
-          alt="logo"
-          width={100}
-          height={100}
-          className="w-auto h-8 cursor-pointer"
-          onClick={() => {
-            if (pathname !== "/summary") {
-              setLoading(true);
-              router.push("/summary");
-            }
-          }}
-        />
+        {pathname === "/login" ? null : (
+          <Image
+            src={"/logo.png"}
+            alt="logo"
+            width={100}
+            height={100}
+            className="w-auto h-8 cursor-pointer"
+            onClick={() => {
+              if (pathname !== "/summary") {
+                setLoading(true);
+                router.push("/summary");
+              }
+            }}
+          />
+        )}
       </div>
       <div className="overflow-auto bg-black">{children}</div>
     </div>

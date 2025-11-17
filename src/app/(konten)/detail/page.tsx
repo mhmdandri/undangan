@@ -24,13 +24,17 @@ export default function Detail() {
   const tab = ["Episodes", "Collection", "Pemeran"];
 
   const color = ["#FF4B4B", "#FF9F1C", "#3A86FF", "#FFD60A", "#2ECC71", "#FF66B3", "#00FFFF", "#A259FF", "#FF6B6B", "#C0FF33"];
+  const defaultUcapan = [
+    { nama: "Nama A", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
+    { nama: "A", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
+    { nama: "Nama A B", ucapan: "Selamat yaa", tanggal: "2025-05-02" },
+    { nama: "Nama A B C", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
+  ].map((item, index) => ({
+    ...item,
+    warna: color[index % color.length],
+  }));
 
-  const [ucapan, setUcapan] = useState<any[]>([
-    { nama: "Nama A", ucapan: "Selamat yaa", tanggal: "2025-02-02", warna: color[Math.floor(Math.random() * color.length)] },
-    { nama: "A", ucapan: "Selamat yaa", tanggal: "2025-02-02", warna: color[Math.floor(Math.random() * color.length)] },
-    { nama: "Nama A B", ucapan: "Selamat yaa", tanggal: "2025-05-02", warna: color[Math.floor(Math.random() * color.length)] },
-    { nama: "Nama A B C", ucapan: "Selamat yaa", tanggal: "2025-02-02", warna: color[Math.floor(Math.random() * color.length)] },
-  ]);
+  const [ucapan, setUcapan] = useState<any[]>(defaultUcapan);
 
   const hurufAwal = (value: string) => {
     return value[0].toUpperCase();
@@ -144,6 +148,7 @@ export default function Detail() {
           <div className="flex mb-2">
             {tab?.map((item: string, index: number) => (
               <div
+                key={item}
                 className={`text-base md:text-lg font-bold px-2 pb-2 cursor-pointer ${index === selectedTab ? "border-t-6 pt-2 border-red-netflix" : "pt-3.5"}`}
                 onClick={() => setSelectedTab(index)}
               >

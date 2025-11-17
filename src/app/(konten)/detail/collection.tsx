@@ -21,7 +21,14 @@ export default function Collection() {
   return (
     <div className="grid grid-cols-3 md:grid-cols-5 gap-4 pb-4 md:gap-6 pb-6">
       {listCollection?.map((item: string, index: number) => (
-        <Image src={item} alt="image" width={300} height={300} className="w-auto h-auto rounded-lg" />
+        <Image
+          key={`${item}-${index}`}
+          src={item}
+          alt="image"
+          width={300}
+          height={300}
+          className="w-auto h-auto rounded-lg"
+        />
       ))}
     </div>
   );
