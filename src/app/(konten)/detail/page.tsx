@@ -63,12 +63,15 @@ export default function Detail() {
 
   return (
     <div className="flex flex-col">
-      <div className="relative w-full aspect-[9/16] md:aspect-video mx-auto bg-gradient-to-b from-neutral-900 to-black">
+      <div className="relative w-full aspect-video mx-auto bg-gradient-to-b from-neutral-900 to-black">
         <div className="absolute inset-0 flex items-center justify-center">
           <video src={"/video.mp4"} autoPlay loop muted={isMuted} className="w-full h-full object-cover" />
           {/* <Image src={"/dummy.png"} alt="dummy" height={100} width={100} className="w-full h-full object-cover" /> */}
           <div className="absolute top-4 right-4 z-10">
-            <button className="bg-black bg-opacity-60 hover:bg-opacity-80 border border-white border-opacity-30 rounded-full p-2 transition-all flex justify-center items-center cursor-pointer" onClick={()=>setIsMuted(!isMuted)}>
+            <button
+              className="bg-black bg-opacity-60 hover:bg-opacity-80 border border-white border-opacity-30 rounded-full p-2 transition-all flex justify-center items-center cursor-pointer"
+              onClick={() => setIsMuted(!isMuted)}
+            >
               {isMuted ? <SpeakerWaveIcon className="w-5 h-5 text-white" /> : <SpeakerXMarkIcon className="w-5 h-5 text-white" />}
             </button>
           </div>
