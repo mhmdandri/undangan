@@ -83,7 +83,7 @@ export default function Summary() {
     payload.is_present = Boolean(form.is_present);
     try {
       setLoading(true);
-      const res = await fetch("https:api.mohaproject.dev/api/reservations", {
+      const res = await fetch("https://api.mohaproject.dev/api/reservations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +93,7 @@ export default function Summary() {
       const data = await res.json();
       setGuest(data.data as Guest);
       if (!res.ok) {
-        toast.error(data.error);
+        toast.error(data.error || data.message);
         return;
       }
       toast.success("Terima kasih! Konfirmasi kehadiran Anda telah tersimpan.");

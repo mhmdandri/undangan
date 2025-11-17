@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LoadingStore from "@/loadingStore";
 import { useRouter } from "next/navigation";
 import ModalRsvp from "@/app/component/modal-rsvp";
@@ -17,6 +17,7 @@ const RsvpConfirmPage = () => {
   const setLoading = LoadingStore((state) => state.setLoading);
   const [code, setCode] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [successMessage, setSuccessMessage] = useState<string>("");
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [guest, setGuest] = useState<Guest>({
     name: "",
@@ -41,11 +42,11 @@ const RsvpConfirmPage = () => {
       });
       const data = await response.json();
       setGuest(data.data as Guest);
-      console.log("response data", data);
       if (!response.ok) {
         setErrorMessage(data.message);
       } else {
         setOpenModal(true);
+        setSuccessMessage(data.message);
         setCode("");
       }
     } catch (error) {
@@ -64,6 +65,7 @@ const RsvpConfirmPage = () => {
     setOpenModal(false);
     router.refresh();
     setErrorMessage("");
+    setSuccessMessage("");
   };
   return (
     <>
@@ -85,12 +87,16 @@ const RsvpConfirmPage = () => {
               </button>
             </div>
           </div>
-          {errorMessage && (
+          {(errorMessage || successMessage) && (
             <div
-              className="py-2 px-4 text-sm text-red-800 rounded-lg bg-red-50 mt-3"
+              className={`py-2 px-4 text-sm ${
+                successMessage
+                  ? "text-green-800 bg-green-50"
+                  : "text-red-800 bg-red-50"
+              } rounded-lg mt-3`}
               role="alert"
             >
-              {errorMessage}
+              {successMessage || errorMessage}
             </div>
           )}
         </div>
@@ -101,13 +107,13 @@ const RsvpConfirmPage = () => {
                 htmlFor="code"
                 className="block text-sm/6 font-medium text-gray-100"
               >
-                Kode Kehadiran
+                Kode Undangan
               </label>
               <div className="mt-2">
                 <input
                   id="code"
                   name="code"
-                  type="text"
+                  type="number"
                   required
                   autoComplete="code"
                   className="input-custom"

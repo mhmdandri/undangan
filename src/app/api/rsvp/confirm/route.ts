@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     }
     return NextResponse.json(
       {
-        message: "Kehadiran Anda telah tersimpan. Terima kasih!",
+        message: "Kehadiran anda telah tersimpan. Terima kasih!",
         data: data.data,
       },
       { status: 200 }
