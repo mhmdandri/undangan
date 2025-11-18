@@ -6,23 +6,17 @@
 @theme {
   --color-red-netflix: #e50914;
 }
+::-webkit-scrollbar {
+  width: 8px;
+}
 
 ::-webkit-scrollbar-track {
-  background: black !important;
+  background: black;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: black !important;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: black !important;
-}
-
-* {
-  scrollbar-color: white black;
-  scrollbar-width: auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
 }
 
 body {

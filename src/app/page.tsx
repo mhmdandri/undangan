@@ -12,6 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     setLoading(false);
+    document.title = "Wedding of John Doe & Jane Doe";
   }, []);
 
   return (

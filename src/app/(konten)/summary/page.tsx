@@ -2,7 +2,6 @@
 
 import ModalCustom from "@/app/component/modal";
 import ModalRsvpInput from "@/app/component/modal-rsvp-input";
-import ModalRsvp from "@/app/component/modal-rsvp-input";
 import LoadingStore from "@/loadingStore";
 import { PlayIcon, PlusIcon } from "@heroicons/react/20/solid";
 import { CalendarIcon, HeartIcon } from "@heroicons/react/24/outline";
@@ -11,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import { toast } from "react-toastify";
+import pemeran from "@/utils/pemeran";
 
 type Guest = {
   name: string;
@@ -62,10 +62,10 @@ export default function Summary() {
   ];
 
   const imageStarring = [
-    "/dummy.png",
-    "/dummy.png",
-    "/dummy.png",
-    "/dummy.png",
+    "/pemeran1.png",
+    "/pemeran2.png",
+    "/pemeran3.svg",
+    "/pemeran4.svg",
     "/dummy.png",
     "/dummy.png",
     "/dummy.png",
@@ -74,6 +74,7 @@ export default function Summary() {
     "/dummy.png",
     "/dummy.png",
   ];
+  const pemeranList = pemeran;
 
   const onSubmitRSVP = async (form: any) => {
     const payload = {
@@ -108,6 +109,7 @@ export default function Summary() {
 
   useEffect(() => {
     setLoading(false);
+    document.title = "Summary Undangan";
   }, []);
 
   return (
@@ -127,22 +129,22 @@ export default function Summary() {
         />
       )}
 
-      <div className="relative w-full aspect-[9/16] md:aspect-[16/9] max-h-[85dvh] md:max-h-[70dvh]">
+      <div className="relative w-full aspect-9/16 md:aspect-video max-h-[85dvh] md:max-h-[70dvh]">
         <Image
-          src={"/dummy.png"}
-          alt="dummy"
-          width={100}
-          height={100}
-          className="w-full h-full object-cover"
+          src={"/prewed.png"}
+          alt="foto"
+          width={3840}
+          height={2160}
+          className="w-full h-full object-top object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 space-y-3 md:space-y-4">
           <div className="flex flex-col">
             <div className="text-3xl md:text-5xl lg:text-6xl mb-2 md:mb-3 font-tegas text-white">
               The Wedding of
             </div>
             <div className="text-4xl md:text-6xl lg:text-7xl mb-4 md:mb-6 text-red-netflix font-tegas">
-              Andri & Cica
+              John Doe & Jane Doe
             </div>
             <div className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 max-w-2xl">
               Bergabunglah dengan kami dalam merayakan hari istimewa kami.
@@ -179,7 +181,7 @@ export default function Summary() {
             partialVisbile
             className="pt-13 md:pt-16 absolute"
           >
-            {imageStarring?.map((item: string, index: number) => (
+            {pemeranList?.map((p, index: number) => (
               <div
                 key={index}
                 className={`aspect-square flex flex-col gap-1 md:gap-2 ${
@@ -187,16 +189,20 @@ export default function Summary() {
                 }`}
               >
                 <Image
-                  src={item}
+                  src={p.image}
                   alt="dummy"
-                  width={100}
-                  height={100}
-                  className={`w-full h-full object-cover rounded-lg`}
+                  width={1920}
+                  height={1080}
+                  className={`w-full h-full object-cover object-top rounded-lg`}
                   draggable={false}
                 />
                 <div className="flex flex-col">
-                  <div className="text-white text-sm md:text-base">Nama 1</div>
-                  <div className="text-gray-300 text-xs md:text-sm">Role 1</div>
+                  <div className="text-white text-sm md:text-base">
+                    {p.name}
+                  </div>
+                  <div className="text-gray-300 text-xs md:text-sm">
+                    {p.role}
+                  </div>
                 </div>
               </div>
             ))}
@@ -208,12 +214,12 @@ export default function Summary() {
         {tanggalTempat?.map((item: any, index: number) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 md:p-8 rounded-lg border border-gray-700 w-full"
+            className="bg-linear-to-br from-gray-900 to-gray-800 p-6 md:p-8 rounded-lg border border-gray-700 w-full"
           >
             {index === 0 ? (
               <CalendarIcon className="w-8 h-8 md:h-10 md:w-10 mb-4 text-red-netflix" />
             ) : (
-              <HeartIcon className="w-8 h-8 md:h-10 md:h-10 mb-4 text-red-netflix" />
+              <HeartIcon className="w-8 h-8 md:h-10 mb-4 text-red-netflix" />
             )}
             <div className="text-xl md:text-2xl mb-2">{item?.title}</div>
             <div className="text-gray-300 text-sm md:text-base">
