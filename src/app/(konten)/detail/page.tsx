@@ -8,9 +8,7 @@ import {
   SpeakerWaveIcon,
 } from "@heroicons/react/24/outline";
 import { CalendarIcon, MapPinIcon } from "@heroicons/react/24/outline";
-import dayjs from "dayjs";
-import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Episode from "./episode";
 import Collection from "./collection";
 import Pemeran from "./pemeran";
@@ -19,7 +17,7 @@ import LoadingStore from "@/loadingStore";
 
 export default function Detail() {
   const setLoading = LoadingStore((state) => state.setLoading);
-  const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const [form, setForm] = useState<any>({
     name: "",
@@ -41,10 +39,18 @@ export default function Detail() {
     "#C0FF33",
   ];
   const defaultUcapan = [
-    { nama: "Nama A", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
-    { nama: "A", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
-    { nama: "Nama A B", ucapan: "Selamat yaa", tanggal: "2025-05-02" },
-    { nama: "Nama A B C", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
+    {
+      nama: "Walter White",
+      ucapan: "Stay out of my territory.",
+      tanggal: "2025-02-02",
+    },
+    {
+      nama: "Saul Goodman",
+      ucapan: "if you're going to eat, eat like you mean it",
+      tanggal: "2025-02-02",
+    },
+    { nama: "Heisenberg", ucapan: "Say my name", tanggal: "2025-05-02" },
+    { nama: "Jesse Pinkman", ucapan: "Yeah, science!", tanggal: "2025-02-02" },
   ].map((item, index) => ({
     ...item,
     warna: color[index % color.length],
@@ -124,6 +130,7 @@ export default function Detail() {
 
   useEffect(() => {
     setLoading(false);
+    document.title = "Detail Undangan";
   }, []);
 
   return (
@@ -135,6 +142,8 @@ export default function Detail() {
             autoPlay
             loop
             muted={isMuted}
+            playsInline
+            webkit-playsinline="true"
             className="w-full h-full object-cover"
           />
           {/* <Image src={"/dummy.png"} alt="dummy" height={100} width={100} className="w-full h-full object-cover" /> */}
@@ -144,15 +153,17 @@ export default function Detail() {
               onClick={() => setIsMuted(!isMuted)}
             >
               {isMuted ? (
-                <SpeakerWaveIcon className="w-5 h-5 text-white" />
-              ) : (
                 <SpeakerXMarkIcon className="w-5 h-5 text-white" />
+              ) : (
+                <SpeakerWaveIcon className="w-5 h-5 text-white" />
               )}
             </button>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-black to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 md:flex hidden flex-col gap-4 px-4 ">
-            <div className="text-2xl md:text-4xl font-bold">Andri & Cica</div>
+            <div className="text-2xl md:text-4xl font-bold">
+              John Doe & Jane Doe
+            </div>
             <div className="flex gap-2">
               <button
                 className="flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-9 bg-white hover:bg-gray-200 text-black px-6 md:px-8 py-5 md:py-6 rounded gap-2 cursor-pointer"
@@ -183,7 +194,7 @@ export default function Detail() {
       <div className="px-4 pb-8">
         <div className="mt-4 mb-6 flex flex-col gap-2">
           <div className="text-2xl md:text-4xl font-bold md:hidden flex">
-            Andri & Cica
+            John Doe & Jane Doe
           </div>
           <div className="flex gap-3 text-sm md:text-lg font-medium text-gray-300 items-center ">
             <div>2025</div>
@@ -282,7 +293,7 @@ export default function Detail() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 md:gap-4">
+        <div className="flex flex-col gap-2 md:gap-4 max-h-[400px] overflow-auto pr-2">
           {ucapan?.map((item: any, index: number) => (
             <div
               className="bg-neutral-900 rounded-lg p-4 border border-neutral-800 gap-2 flex"

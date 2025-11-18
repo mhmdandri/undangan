@@ -12,6 +12,7 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState<string>("");
   useEffect(() => {
     setLoading(false);
+    document.title = "Login Admin";
   }, []);
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,8 +41,8 @@ const LoginPage = () => {
     <div className="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <Image
-          alt="logo"
-          src="/logo.png"
+          alt="logo-new"
+          src="/logo-new.png"
           width={240}
           height={240}
           className="mx-auto"

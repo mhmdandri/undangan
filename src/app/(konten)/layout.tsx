@@ -1,9 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
 import dayjs from "dayjs";
-
 import utc from "dayjs/plugin/utc.js";
 import timezone from "dayjs/plugin/timezone.js";
 import localizedFormat from "dayjs/plugin/localizedFormat.js";
@@ -29,7 +27,7 @@ export default function LayoutKonten({
   const setLoading = LoadingStore((state) => state.setLoading);
 
   return (
-    <div className="w-full h-[100dvh]">
+    <div className="w-full h-dvh">
       <ToastContainer
         closeButton={false}
         toastClassName={"toastify"}
@@ -43,10 +41,10 @@ export default function LayoutKonten({
         pauseOnHover
       />
       <div className="sticky top-0 bg-black w-full px-4 py-3 md:px-6 md:py-4">
-        {pathname === "/login" ? null : (
+        {pathname === "/login" || pathname === "/rsvp/confirm" ? null : (
           <Image
-            src={"/logo.png"}
-            alt="logo"
+            src="/logo-new.png"
+            alt="logo-new"
             width={100}
             height={100}
             className="w-auto h-8 cursor-pointer"
