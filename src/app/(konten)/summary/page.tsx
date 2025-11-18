@@ -147,9 +147,9 @@ export default function Summary() {
               John Doe & Jane Doe
             </div>
             <div className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 max-w-2xl">
-              Bergabunglah dengan kami dalam merayakan hari istimewa kami.
-              Sebuah kisah cinta yang indah, sebuah perjalanan yang tak
-              terlupakan.
+              The wait is finally over. Join us for the season premiere of our
+              new life together. A story of love, laughter, and happily ever
+              after.
             </div>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <button
@@ -159,7 +159,7 @@ export default function Summary() {
                   router.push("/detail");
                 }}
               >
-                <PlayIcon className="w-6 h-6" /> Buka Undangan
+                <PlayIcon className="w-6 h-6" /> Watch Now
               </button>
               <button
                 className="flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-9 bg-gray-600/80 hover:bg-gray-600 text-white px-6 md:px-8 py-5 md:py-6 rounded gap-2 cursor-pointer"

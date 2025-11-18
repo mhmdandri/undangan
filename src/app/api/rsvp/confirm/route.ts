@@ -23,10 +23,14 @@ export async function POST(req: NextRequest) {
     );
     const data = await res.json();
     if (!res.ok) {
-      return NextResponse.json(
+      const response = NextResponse.json(
         { message: data.error || data.message },
         { status: res.status }
       );
+      if (res.status === 401) {
+        response.cookies.delete("token");
+      }
+      return response;
     }
     return NextResponse.json(
       {

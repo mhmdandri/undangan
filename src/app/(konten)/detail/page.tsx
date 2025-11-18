@@ -8,9 +8,7 @@ import {
   SpeakerWaveIcon,
 } from "@heroicons/react/24/outline";
 import { CalendarIcon, MapPinIcon } from "@heroicons/react/24/outline";
-import dayjs from "dayjs";
-import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Episode from "./episode";
 import Collection from "./collection";
 import Pemeran from "./pemeran";
@@ -41,10 +39,18 @@ export default function Detail() {
     "#C0FF33",
   ];
   const defaultUcapan = [
-    { nama: "Nama A", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
-    { nama: "A", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
-    { nama: "Nama A B", ucapan: "Selamat yaa", tanggal: "2025-05-02" },
-    { nama: "Nama A B C", ucapan: "Selamat yaa", tanggal: "2025-02-02" },
+    {
+      nama: "Walter White",
+      ucapan: "Stay out of my territory.",
+      tanggal: "2025-02-02",
+    },
+    {
+      nama: "Saul Goodman",
+      ucapan: "if you're going to eat, eat like you mean it",
+      tanggal: "2025-02-02",
+    },
+    { nama: "Heisenberg", ucapan: "Say my name", tanggal: "2025-05-02" },
+    { nama: "Jesse Pinkman", ucapan: "Yeah, science!", tanggal: "2025-02-02" },
   ].map((item, index) => ({
     ...item,
     warna: color[index % color.length],
@@ -188,7 +194,7 @@ export default function Detail() {
       <div className="px-4 pb-8">
         <div className="mt-4 mb-6 flex flex-col gap-2">
           <div className="text-2xl md:text-4xl font-bold md:hidden flex">
-            Andri & Cica
+            John Doe & Jane Doe
           </div>
           <div className="flex gap-3 text-sm md:text-lg font-medium text-gray-300 items-center ">
             <div>2025</div>

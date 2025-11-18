@@ -1,6 +1,4 @@
 "use client";
-
-import Loading from "@/loading";
 import LoadingStore from "@/loadingStore";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -32,9 +30,9 @@ export default function Home() {
               alt="profile"
               width={96}
               height={96}
-              className="rounded-lg max-h-[200px] max-w-[200px] min-h-[96px] min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white"
+              className="rounded-lg max-h-[200px] max-w-[200px] min-h-24 min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white"
             />
-            <div className="text-lg lg:text-xl text-center">Guest</div>
+            <div className="text-lg lg:text-xl text-center">John Doe</div>
           </div>
           <div className="space-y-2 group hover:text-white">
             <Image
@@ -42,9 +40,9 @@ export default function Home() {
               alt="profile"
               width={96}
               height={96}
-              className="rounded-lg max-h-[200px] max-w-[200px] min-h-[96px] min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white"
+              className="rounded-lg max-h-[200px] max-w-[200px] min-h-24 min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white"
             />
-            <div className="text-lg lg:text-xl text-center">Guest</div>
+            <div className="text-lg lg:text-xl text-center">Jane Doe</div>
           </div>
         </div>
       </div>

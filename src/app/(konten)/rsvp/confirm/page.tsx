@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import LoadingStore from "@/loadingStore";
 import { useRouter } from "next/navigation";
 import ModalRsvp from "@/app/component/modal-rsvp";
+import Image from "next/image";
 
 type Guest = {
   name: string;
@@ -28,6 +29,7 @@ const RsvpConfirmPage = () => {
   });
   useEffect(() => {
     setLoading(false);
+    document.title = "Admin RSVP Confirmation";
   }, []);
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -72,7 +74,14 @@ const RsvpConfirmPage = () => {
       <ModalRsvp isOpen={openModal} onClose={closeModal} data={guest ?? ""} />
       <div className="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <div className="flex justify-between items-center text-center mt-5">
+          <Image
+            alt="logo-new"
+            src="/logo-new.png"
+            width={240}
+            height={240}
+            className="mx-auto mb-6"
+          />
+          {/* <div className="flex justify-between items-center text-center mt-5">
             <div>
               <h2 className="text-2xl/9 font-bold tracking-tight text-white">
                 Input Kehadiran
@@ -86,7 +95,7 @@ const RsvpConfirmPage = () => {
                 Logout
               </button>
             </div>
-          </div>
+          </div> */}
           {(errorMessage || successMessage) && (
             <div
               className={`py-2 px-4 text-sm ${
