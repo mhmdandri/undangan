@@ -97,7 +97,7 @@ export default function Summary() {
         toast.error(data.error || data.message);
         return;
       }
-      toast.success("Terima kasih! Konfirmasi kehadiran Anda telah tersimpan.");
+      toast.success("Terima kasih! Konfirmasi anda telah tersimpan.");
       setShowModal(true);
     } catch (error: any) {
       toast.error("Terjadi kesalahan saat mengirim data. Silakan coba lagi.");
