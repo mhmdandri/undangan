@@ -57,6 +57,7 @@ export default function Detail() {
   }));
 
   const [ucapan, setUcapan] = useState<any[]>(defaultUcapan);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,9 +71,8 @@ export default function Detail() {
           warna: color[index % color.length],
         }));
         setUcapan(mappedData);
-        console.log(mappedData);
       } catch (err) {
-        console.error(err);
+        setErrorMessage("Gagal memuat ucapan" + err);
       }
     };
     fetchData();
@@ -104,13 +104,23 @@ export default function Detail() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(payload),
       });
       const data = await res.json();
+      if (res.status === 429) {
+        throw {
+          code: data?.code ?? "RATELIMIT",
+          error:
+            data?.error ?? "Harap tunggu 1 menit sebelum mengirim ucapan lagi",
+        };
+      }
+
       if (!res.ok) {
-        throw new Error(
-          data?.error ?? "Terjadi kesalahan saat mengirim ucapan"
-        );
+        throw {
+          code: data?.code,
+          error: data?.error ?? "Terjadi kesalahan saat mengirim ucapan",
+        };
       }
       const newUcapan = {
         nama: payload.name,
@@ -122,7 +132,11 @@ export default function Detail() {
       toast.success("Ucapan kamu telah dikirim");
       setForm({ name: "", message: "" });
     } catch (error: any) {
-      toast.error(error?.message ?? "Terjadi kesalahan saat mengirim ucapan");
+      toast.error(
+        error?.error ??
+          error?.message ??
+          "Terjadi kesalahan saat mengirim ucapan"
+      );
     } finally {
       setLoading(false);
     }

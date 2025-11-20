@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const data = await res.json();
     if (!res.ok) {
       const response = NextResponse.json(
-        { message: data.error || data.message },
+        { message: data.error || "Konfirmasi RSVP gagal" },
         { status: res.status }
       );
       if (res.status === 401) {
