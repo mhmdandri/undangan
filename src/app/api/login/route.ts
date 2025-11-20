@@ -12,10 +12,7 @@ export async function POST(req: NextRequest) {
     });
     const data = await res.json();
     if (!res.ok) {
-      return NextResponse.json(
-        { message: data.message || "Login failed" },
-        { status: res.status }
-      );
+      return NextResponse.json({ message: data.error }, { status: res.status });
     }
     const response = NextResponse.json(
       { user: data.user, message: "Login Berhasil" },
