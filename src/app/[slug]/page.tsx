@@ -9,17 +9,6 @@ export default function Home() {
   const setLoading = LoadingStore((state) => state.setLoading);
   const params = useParams();
 
-  const upperCase = (value: string) => {
-    let temp = decodeURIComponent(value).split(" ");
-    let final: any[] = [];
-    temp.forEach((item: any) => {
-      item = item[0].toUpperCase() + item.slice(1, item.length);
-      final.push(item);
-    });
-
-    return final.join(" ");
-  };
-
   useEffect(() => {
     setLoading(false);
     document.title = "Wedding of John Doe & Jane Doe";
@@ -38,7 +27,7 @@ export default function Home() {
             }}
           >
             <Image src={"/avatar.jpg"} alt="profile" width={96} height={96} className="rounded-lg max-h-[200px] max-w-[200px] min-h-24 min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white" />
-            <div className="text-lg lg:text-xl text-center">{upperCase(params.slug as string)}</div>
+            <div className="text-lg lg:text-xl text-center">Cica</div>
           </div>
           <div
             className="space-y-2 group hover:text-white cursor-pointer"
@@ -48,7 +37,7 @@ export default function Home() {
             }}
           >
             <Image src={"/profile.jpg"} alt="profile" width={96} height={96} className="rounded-lg max-h-[200px] max-w-[200px] min-h-24 min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white" />
-            <div className="text-lg lg:text-xl text-center">{upperCase(params.slug as string)}</div>
+            <div className="text-lg lg:text-xl text-center">Adnri</div>
           </div>
         </div>
       </div>
