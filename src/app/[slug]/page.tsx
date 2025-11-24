@@ -7,11 +7,11 @@ import { useEffect } from "react";
 export default function Home() {
   const router = useRouter();
   const setLoading = LoadingStore((state) => state.setLoading);
+  const params = useParams();
 
   useEffect(() => {
     setLoading(false);
     document.title = "Wedding of John Doe & Jane Doe";
-    router.push("/guest");
   }, []);
 
   return (
@@ -23,7 +23,7 @@ export default function Home() {
             className="space-y-2 group hover:text-white cursor-pointer"
             onClick={() => {
               setLoading(true);
-              router.push("https://weddingof.mohaproject.dev/guest");
+              router.push(`https://weddingof.mohaproject.dev/${params.slug}`);
             }}
           >
             <Image
