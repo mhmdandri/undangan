@@ -7,6 +7,7 @@ import { useEffect } from "react";
 export default function Home() {
   const router = useRouter();
   const setLoading = LoadingStore((state) => state.setLoading);
+  const params = useParams();
 
   useEffect(() => {
     setLoading(false);
@@ -22,7 +23,7 @@ export default function Home() {
             className="space-y-2 group hover:text-white cursor-pointer"
             onClick={() => {
               setLoading(true);
-              router.push("https://weddingof.mohaproject.dev/guest");
+              router.push(`https://weddingof.mohaproject.dev/${params.slug}`);
             }}
           >
             <Image src={"/avatar.jpg"} alt="profile" width={96} height={96} className="rounded-lg max-h-[200px] max-w-[200px] min-h-24 min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white" />
@@ -36,7 +37,7 @@ export default function Home() {
             }}
           >
             <Image src={"/profile.jpg"} alt="profile" width={96} height={96} className="rounded-lg max-h-[200px] max-w-[200px] min-h-24 min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white" />
-            <div className="text-lg lg:text-xl text-center">Andri</div>
+            <div className="text-lg lg:text-xl text-center">Adnri</div>
           </div>
         </div>
       </div>
