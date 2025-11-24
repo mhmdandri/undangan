@@ -26,7 +26,7 @@ export default function Home() {
             }}
           >
             <Image src={"/avatar.jpg"} alt="profile" width={96} height={96} className="rounded-lg max-h-[200px] max-w-[200px] min-h-24 min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white" />
-            <div className="text-lg lg:text-xl text-center">Guest</div>
+            <div className="text-lg lg:text-xl text-center">Cica</div>
           </div>
           <div
             className="space-y-2 group hover:text-white cursor-pointer"
@@ -36,7 +36,7 @@ export default function Home() {
             }}
           >
             <Image src={"/profile.jpg"} alt="profile" width={96} height={96} className="rounded-lg max-h-[200px] max-w-[200px] min-h-24 min-w-[96px] w-[10vw] object-cover group-hover:border group-hover:border-white" />
-            <div className="text-lg lg:text-xl text-center">Guest</div>
+            <div className="text-lg lg:text-xl text-center">Andri</div>
           </div>
         </div>
       </div>
